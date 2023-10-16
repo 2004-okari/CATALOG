@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# This is item.rb
+
 class Item
   attr_accessor :genre, :author, :source, :label, :publish_date, :archived
   attr_reader :id
@@ -15,8 +17,9 @@ class Item
   end
 
   def can_be_archived?
-    ten_years = Time.now - (10 * 365 * 24 * 60 * 60)
-    @publish_date > ten_years
+    current_year = Date.today.year
+    publish_year = Date.parse(@publish_date).year
+    current_year - publish_year > 10
   end
 
   def move_to_archive
