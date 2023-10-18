@@ -29,20 +29,40 @@ class Saving
     end
   end
 
+  def load_games(games)
+    return unless File.exist?('data/games.json')
+
+    retrieved_games = JSON.parse(File.read('data/games.json'))
+    retrieved_games.each do |game_data|
+      game = Game.new(game_data['publish_date'], game_data['multiplayer'], game_data['last_played_at'])
+      games << game
+    end
+  end
+
+  def load_authors(authors)
+    return unless File.exist?('data/authors.json')
+
+    retrieved_authors = JSON.parse(File.read('data/authors.json'))
+    retrieved_authors.each do |author_data|
+      author = Author.new(author_data['id'], author_data['full_name'])
+      authors << author
+    end
+  end
+
   def load_sources(sources)
     return unless File.exist?('data/sources.json')
-  
+
     source_hash = JSON.parse(File.read('data/sources.json'))
     source_hash.each do |source|
       source_obj = Source.new(source['name'])
       source_obj.id = source['id']
       sources << source_obj
     end
-  end  
+  end
 
   def load_movies(movies)
     return unless File.exist?('data/movies.json')
-  
+
     movie_hash = JSON.parse(File.read('data/movies.json'))
     movie_hash.each do |movie|
       movie_obj = Movie.new(movie['publish_date'], silent: movie['silent'])
@@ -51,5 +71,5 @@ class Saving
       movie_obj.add_source(source_obj)
       movies << movie_obj
     end
-  end  
+  end
 end

@@ -30,11 +30,17 @@ class App
     Storage.new.save_labels(@labels)
     Storage.new.save_movies(@movies)
     Storage.new.save_sources(@sources)
+    Storage.new.save_games(@games)
+    Storage.new.save_authors(@authors)
   end
 
   def load_data
     Saving.new.load_books(@books)
     Saving.new.load_labels(@labels)
+    Saving.new.load_movies(@movies)
+    Saving.new.load_sources(@sources)
+    Saving.new.load_games(@games)
+    Saving.new.load_authors(@authors)
   end
 
   def list_genre

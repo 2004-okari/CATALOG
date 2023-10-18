@@ -22,6 +22,27 @@ class Storage
     File.write('data/labels.json', JSON.pretty_generate(json_labels))
   end
 
+  def save_games(games)
+    json_games = games.map do |game|
+      {
+        'publish_date' => game.publish_date,
+        'multiplayer' => game.multiplayer,
+        'last_played_at' => game.last_played_at
+      }
+    end
+    File.write('data/games.json', JSON.pretty_generate(json_games))
+  end
+
+  def save_authors(authors)
+    json_authors = authors.map do |author|
+      {
+        'id' => author.id,
+        'full_name' => author.full_name
+      }
+    end
+    File.write('data/authors.json', JSON.pretty_generate(json_authors))
+  end
+
   def save_movies(movies)
     movie_hash = movies.map do |movie|
       {
@@ -33,7 +54,7 @@ class Storage
     end
     File.write('data/movies.json', JSON.pretty_generate(movie_hash))
   end
-  
+
 
   def save_sources(sources)
     source_hash = sources.map do |source|
@@ -43,5 +64,5 @@ class Storage
       }
     end
     File.write('data/sources.json', JSON.pretty_generate(source_hash))
-  end  
+  end
 end
