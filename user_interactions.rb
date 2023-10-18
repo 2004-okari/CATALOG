@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'app'
 
 class UserInteractions
@@ -10,7 +12,10 @@ class UserInteractions
     loop do
       show_options
       option = gets.chomp.to_i
-      break if option == 13
+      if option == 13
+        @catalog.save_data
+        break
+      end
 
       call_option(option)
     end
@@ -49,7 +54,7 @@ class UserInteractions
       10 => :add_music_album,
       11 => :add_movie,
       12 => :add_game,
-      13 => :exit
+      13 => :save_data
     }
 
     @catalog.public_send(option_lookup[option])
