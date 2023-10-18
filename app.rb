@@ -46,6 +46,21 @@ class App
     print 'Music album created!'
   end
 
+  def add_book
+    create_book
+    puts 'You\'ve successfully added a book'
+  end
+
+  def create_book(book)
+    puts 'Date published (dd/mm/yy):'
+    publish_date = gets.chomp
+    puts 'Publisher\'s name:'
+    publisher = gets.chomp
+    puts 'State of book cover (Good or bad):'
+    cover_state = gets.chomp
+    book = Book.new(publish_date, publisher, cover_state)
+  end
+
   def list_games
     if @games.empty?
       puts 'No games found.'
