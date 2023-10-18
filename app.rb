@@ -100,7 +100,7 @@ class App
     puts "When did you last play the game(yyyy-mm-dd)"
     last_played = gets.chomp.to_s
     game = Game.new(publish_date, multiplayer, last_played)
-    @game.push(game)
+    @games.push(game)
     puts "Hurray! Game created"
   end
 end
