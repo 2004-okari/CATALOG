@@ -15,6 +15,8 @@ class App
     @authors = []
     @books = []
     @labels = []
+    @movies = []
+    @sources = []
   end
 
   def list_genre
@@ -57,18 +59,15 @@ class App
   end
 
   def add_book
-    create_book
-    puts 'You\'ve successfully added a book'
-  end
-
-  def create_book(book)
-    puts 'Date published (dd/mm/yy):'
+    puts 'Lets create a book\n Give date of publish(yyyy-mm-dd):'
     publish_date = gets.chomp
     puts 'Publisher\'s name:'
     publisher = gets.chomp
     puts 'State of book cover (Good or bad):'
     cover_state = gets.chomp
-    books = Book.new(publish_date, publisher, cover_state)
+    book = Book.new(publish_date, publisher, cover_state)
+    @books.push(book)
+    puts 'You\'ve successfully added a book'
   end
 
   def list_games
@@ -95,18 +94,18 @@ class App
     end
   end
 
-  def list_all_books(books)
-    puts 'Books unavailable' if books.empty?
+  def list_all_books
+    puts 'Books unavailable' if @books.empty?
     puts
-    books.each do |book|
+    @books.each do |book|
       puts "Publish Date: #{book.publish_date}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
     end
   end
 
-  def list_all_labels(labels)
-    puts 'Labels unavailable' if labels.empty?
+  def list_all_labels
+    puts 'Labels unavailable' if @labels.empty?
     puts
-    labels.each do |label|
+    @labels.each do |label|
       puts "Title: #{label.title}, Author: #{label.color}"
     end
   end
