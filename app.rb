@@ -1,6 +1,11 @@
-require_relative '../classes/genre'
-require_relative '../classes/music_album'
+require_relative './classes/genre'
+require_relative './classes/music_album'
+require_relative './classes/game'
+require_relative './classes/author'
 require_relative './classes/book'
+require_relative './classes/label'
+require_relative './classes/movie'
+require_relative './classes/source'
 
 class App
   def initialize
@@ -35,9 +40,9 @@ class App
   def add_music_album
     print 'Is it on Spotify(Y/N): '
     spotify = gets.chomp
-    if spotify.lowercase == 'y'
+    if spotify.downcase == 'y'
       spotify = true
-    elsif spotify.lowercase == 'n'
+    elsif spotify.downcase == 'n'
       spotify = false
     else
       print 'Invalid answer'
@@ -45,7 +50,9 @@ class App
     end
     puts "What's the genre?: "
     genre_name = gets.chomp
-    new_genre = MusicAlbum.new(spotify, genre_name)
+    new_music_album = MusicAlbum.new(spotify, genre_name)
+    @genre << genre_name unless @genre.include? genre_name
+    @music_album << new_music_album
     print 'Music album created!'
   end
 
@@ -107,9 +114,9 @@ class App
     publish_date = gets.chomp.to_s
     puts "Is the game a multiplayer game(Yy/Nn)?"
     multiplayer = gets.chomp
-    if multiplayer.lowercase == 'y'
+    if multiplayer.downcase == 'y'
       multiplayer = true
-    elsif multiplayer.lowercase == 'n'
+    elsif multiplayer.downcase == 'n'
       multiplayer = false
     else
       puts 'Invalid choice!'
@@ -120,5 +127,18 @@ class App
     game = Game.new(publish_date, multiplayer, last_played)
     @games.push(game)
     puts "Hurray! Game created"
+  end
+
+
+  def display_all_sources
+    @sources.each_with_index do |source, index|
+      puts "#{index}) Source Name: #{source.name}"
+    end
+  end
+
+  def display_all_movies
+    @movies.each_with_index do |movie, index|
+      puts "#{index}) Silent: #{movie.silent}, Publish Date: #{movie.publish_date} Source: #{movie.source.name}"
+    end
   end
 end
