@@ -2,17 +2,23 @@
 
 # This is item.rb
 
+require 'date'
+
 class Item
   attr_accessor :genre, :author, :source, :label, :publish_date
-  attr_reader :id
+  attr_reader :id 
 
   def initialize(publish_date)
     @id = Random.rand(1..1000)
-    @genre = genre
     @source = source
     @label = label
     @publish_date = publish_date
     @archived = false
+  end
+
+  def add_genre(genre)
+    @genre = genre
+    genre.items << self unless genre.items.include?(self)
   end
 
   def add_author(author)
