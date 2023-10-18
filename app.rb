@@ -10,6 +10,7 @@ require_relative './classes/movie'
 require_relative './classes/source'
 require_relative './classes/loading'
 require_relative './classes/storage'
+require_relative './classes/book'
 
 # This contains general information
 class App
@@ -18,6 +19,7 @@ class App
     @music_album = []
     @games = []
     @authors = []
+    @books = []
     @labels = []
     @movies = []
     @sources = []
@@ -77,8 +79,7 @@ class App
   end
 
   def add_book
-    puts 'Lets create a book'
-    puts 'Give date of publish(yyyy-mm-dd):'
+    puts 'Lets create a book/n Give date of publish(yyyy-mm-dd):'
     publish_date = gets.chomp
     puts 'Publisher\'s name:'
     publisher = gets.chomp
