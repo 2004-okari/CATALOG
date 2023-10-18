@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../classes/source'
 require_relative '../classes/item'
 

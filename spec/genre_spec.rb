@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../classes/genre'
 require_relative '../classes/item'
 
@@ -18,5 +20,4 @@ describe 'Genre' do
       expect(item.genre).to eq(genre)
     end
   end
-
 end

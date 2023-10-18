@@ -1,4 +1,6 @@
-require_relative '../classes/movie.rb'
+# frozen_string_literal: true
+
+require_relative '../classes/movie'
 require 'rspec'
 
 describe Movie do
