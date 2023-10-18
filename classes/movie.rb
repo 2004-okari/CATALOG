@@ -1,4 +1,5 @@
 require_relative 'source'
+require_relative 'item'
 
 class Movie < Item
   attr_accessor :archived, :silent
@@ -9,6 +10,6 @@ class Movie < Item
   end
 
   def can_be_archived?
-    super && !@silent
+    super && @silent
   end
 end
