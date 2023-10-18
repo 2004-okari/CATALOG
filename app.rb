@@ -1,5 +1,6 @@
 require_relative '../classes/genre'
 require_relative '../classes/music_album'
+require_relative './classes/book'
 
 class App
   def initialize
@@ -7,6 +8,8 @@ class App
     @music_album = []
     @games = []
     @authors = []
+    @books = []
+    @labels = []
   end
 
   def list_genre
@@ -58,7 +61,7 @@ class App
     publisher = gets.chomp
     puts 'State of book cover (Good or bad):'
     cover_state = gets.chomp
-    book = Book.new(publish_date, publisher, cover_state)
+    books = Book.new(publish_date, publisher, cover_state)
   end
 
   def list_games
