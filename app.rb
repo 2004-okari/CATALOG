@@ -29,6 +29,8 @@ class App
     puts 'saving data...'
     Storage.new.save_book(@books)
     Storage.new.save_labels(@labels)
+    Storage.new.save_movies(@movies)
+    Storage.new.save_sources(@sources)
   end
 
   def load_data
