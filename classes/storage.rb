@@ -22,8 +22,8 @@ class Storage
     File.write('data/labels.json', JSON.pretty_generate(json_labels))
   end
 
-  def save_movies
-    movie_hash = @movies.map do |movie|
+  def save_movies(movies)
+    movie_hash = movies.map do |movie|
       {
         id: movie.id,
         publish_date: movie.publish_date,
@@ -31,16 +31,17 @@ class Storage
         source: movie.source.name
       }
     end
-    File.write('data/movie.json', JSON.pretty_generate(movie_hash))
+    File.write('data/movies.json', JSON.pretty_generate(movie_hash))
   end
+  
 
-  def save_source
-    source_hash = @sources.map do |source|
+  def save_sources(sources)
+    source_hash = sources.map do |source|
       {
         id: source.id,
         name: source.name
       }
     end
-    File.write('data/source.json', JSON.pretty_generate(source_hash))
-  end
+    File.write('data/sources.json', JSON.pretty_generate(source_hash))
+  end  
 end
