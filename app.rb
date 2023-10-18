@@ -84,4 +84,23 @@ class App
     end
   end
 
+  def add_game
+    puts "Lets add a new game(yyyy-mm-dd)"
+    publish_date = gets.chomp.to_s
+    puts "Is the game a multiplayer game(Yy/Nn)?"
+    multiplayer = gets.chomp
+    if multiplayer.lowercase == 'y'
+      multiplayer = true
+    elsif multiplayer.lowercase == 'n'
+      multiplayer = false
+    else
+      puts 'Invalid choice!'
+      exit
+    end
+    puts "When did you last play the game(yyyy-mm-dd)"
+    last_played = gets.chomp.to_s
+    game = Game.new(publish_date, multiplayer, last_played)
+    @game.push(game)
+    puts "Hurray! Game created"
+  end
 end
