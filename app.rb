@@ -16,6 +16,8 @@ class App
     @games = []
     @authors = []
     @labels = []
+    @movies = []
+    @sources = []
   end
 
   def list_genre
@@ -57,16 +59,31 @@ class App
     print 'Music album created!'
   end
 
+  def add_book
+    puts 'Lets create a book'
+    puts 'Give date of publish(yyyy-mm-dd):'
+    publish_date = gets.chomp
+    puts 'Publisher\'s name:'
+    publisher = gets.chomp
+    puts 'State of book cover (Good or bad):'
+    cover_state = gets.chomp
+    book = Book.new(publish_date, publisher, cover_state)
+    @books.push(book)
+    puts 'You\'ve successfully added a book'
+  end
+
   def list_games
     if @games.empty?
       puts 'No games found.'
     else
       puts 'List of Games:'
-      @games.each do |game|
-        puts "ID: #{game.id}, Title: #{game.title}"
+      @games.each_with_index do |game, index|
+        puts "#{index + 1}, ID: #{game.id}, Published Date: #{game.publish_date}, Multiplayer: #{game.multiplayer ? 'Yes' : 'No'}, Last Played: #{game.last_played_at}"
       end
     end
   end
+
+
 
   def list_authors
     if @authors.empty?
@@ -79,16 +96,24 @@ class App
     end
   end
 
-  def list_all_labels(labels)
-    puts 'Labels unavailable' if labels.empty?
+  def list_all_books
+    puts 'Books unavailable' if @books.empty?
     puts
-    labels.each do |label|
+    @books.each do |book|
+      puts "Publish Date: #{book.publish_date}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
+    end
+  end
+
+  def list_all_labels
+    puts 'Labels unavailable' if @labels.empty?
+    puts
+    @labels.each do |label|
       puts "Title: #{label.title}, Author: #{label.color}"
     end
   end
 
   def add_game
-    puts "Lets add a new game(yyyy-mm-dd)"
+    puts "Lets add a new game\nWhen was the game published(yyyy-mm-dd)"
     publish_date = gets.chomp.to_s
     puts "Is the game a multiplayer game(Yy/Nn)?"
     multiplayer = gets.chomp
@@ -117,5 +142,43 @@ class App
     @movies.each_with_index do |movie, index|
       puts "#{index}) Silent: #{movie.silent}, Publish Date: #{movie.publish_date} Source: #{movie.source.name}"
     end
+  end
+
+  def add_movie
+    publish_date = input_date
+    silent = input_silent
+    movie = Movie.new(publish_date, silent: silent)
+    @movies << movie
+    new_source = add_sources
+    existing_source = @sources.find { |source| source.name == new_source }
+    if existing_source
+      existing_source.add_item(movie)
+    else
+      source = Source.new(new_source)
+      source.add_item(movie)
+      @sources << source
+    end
+  end
+
+  def input_date
+    puts 'Please Enter publish date in following format: yyyy/mm/dd'
+    gets.chomp
+  end
+
+  def add_sources
+    puts 'Add a source'
+    puts 'Enter Source Name'
+    gets.chomp
+  end
+
+  def input_silent
+    puts 'Is the movie silent? Press 1 for true, 2 for false'
+    silent = gets.chomp.to_i
+    while silent.nil? || silent < 1 || silent > 2
+      puts 'input number between 1 and 2'
+      silent = gets.chomp.to_i
+    end
+
+    silent == 1
   end
 end
