@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 require_relative 'source'
 require_relative 'item'
 
+# Movie represents an list of movies
 class Movie < Item
   attr_accessor :archived, :silent
 
