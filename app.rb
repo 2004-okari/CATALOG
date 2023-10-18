@@ -1,19 +1,20 @@
+# frozen_string_literal: true
+
 require_relative './classes/genre'
 require_relative './classes/music_album'
 require_relative './classes/game'
 require_relative './classes/author'
-require_relative './classes/book'
 require_relative './classes/label'
 require_relative './classes/movie'
 require_relative './classes/source'
 
+# This contains general information
 class App
   def initialize
     @genre = []
     @music_album = []
     @games = []
     @authors = []
-    @books = []
     @labels = []
   end
 
@@ -56,21 +57,6 @@ class App
     print 'Music album created!'
   end
 
-  def add_book
-    create_book
-    puts 'You\'ve successfully added a book'
-  end
-
-  def create_book(book)
-    puts 'Date published (dd/mm/yy):'
-    publish_date = gets.chomp
-    puts 'Publisher\'s name:'
-    publisher = gets.chomp
-    puts 'State of book cover (Good or bad):'
-    cover_state = gets.chomp
-    books = Book.new(publish_date, publisher, cover_state)
-  end
-
   def list_games
     if @games.empty?
       puts 'No games found.'
@@ -90,14 +76,6 @@ class App
       @authors.each do |author|
         puts "ID: #{author.id}, Name: #{author.full_name}"
       end
-    end
-  end
-
-  def list_all_books(books)
-    puts 'Books unavailable' if books.empty?
-    puts
-    books.each do |book|
-      puts "Publish Date: #{book.publish_date}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
     end
   end
 
@@ -128,7 +106,6 @@ class App
     @games.push(game)
     puts "Hurray! Game created"
   end
-
 
   def display_all_sources
     @sources.each_with_index do |source, index|
