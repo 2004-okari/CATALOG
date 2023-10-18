@@ -76,11 +76,13 @@ class App
       puts 'No games found.'
     else
       puts 'List of Games:'
-      @games.each do |game|
-        puts "ID: #{game.id}, Title: #{game.title}"
+      @games.each_with_index do |game, index|
+        puts "#{index + 1}, ID: #{game.id}, Published Date: #{game.publish_date}, Multiplayer: #{game.multiplayer ? 'Yes' : 'No'}, Last Played: #{game.last_played_at}"
       end
     end
   end
+
+
 
   def list_authors
     if @authors.empty?
@@ -110,7 +112,7 @@ class App
   end
 
   def add_game
-    puts "Lets add a new game(yyyy-mm-dd)"
+    puts "Lets add a new game\nWhen was the game published(yyyy-mm-dd)"
     publish_date = gets.chomp.to_s
     puts "Is the game a multiplayer game(Yy/Nn)?"
     multiplayer = gets.chomp
