@@ -118,4 +118,17 @@ class App
     @games.push(game)
     puts "Hurray! Game created"
   end
+
+
+  def display_all_sources
+    @sources.each_with_index do |source, index|
+      puts "#{index}) Source Name: #{source.name}"
+    end
+  end
+
+  def display_all_movies
+    @movies.each_with_index do |movie, index|
+      puts "#{index}) Silent: #{movie.silent}, Publish Date: #{movie.publish_date} Source: #{movie.source.name}"
+    end
+  end
 end
