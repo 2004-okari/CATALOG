@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'json'
 require_relative './classes/genre'
 require_relative './classes/music_album'
 require_relative './classes/game'
@@ -7,6 +8,8 @@ require_relative './classes/author'
 require_relative './classes/label'
 require_relative './classes/movie'
 require_relative './classes/source'
+require_relative './classes/loading'
+require_relative './classes/storage'
 
 # This contains general information
 class App
@@ -18,11 +21,25 @@ class App
     @labels = []
     @movies = []
     @sources = []
+    load_data
+  end
+
+  def save_data
+    puts 'saving data...'
+    Storage.new.save_book(@books)
+    Storage.new.save_labels(@labels)
+    Storage.new.save_movies(@movies)
+    Storage.new.save_sources(@sources)
+  end
+
+  def load_data
+    Saving.new.load_books(@books)
+    Saving.new.load_labels(@labels)
   end
 
   def list_genre
     if @genre.empty?
-      puts "No genres found. Add a genre"
+      puts 'No genres found. Add a genre'
     else
       @genre.each_with_index do |genre, index|
         puts "#{index + 1}) Genre: \"#{genre}\""
@@ -32,7 +49,7 @@ class App
 
   def list_music_album
     if @music_album.empty?
-      puts "No music albums found. Add a music album"
+      puts 'No music albums found. Add a music album'
     else
       @music_album.each_with_index do |album, index|
         puts "#{index + 1}) Music Album: \"#{album}\""
@@ -83,8 +100,6 @@ class App
     end
   end
 
-
-
   def list_authors
     if @authors.empty?
       puts 'No authors found.'
@@ -115,7 +130,7 @@ class App
   def add_game
     puts "Lets add a new game\nWhen was the game published(yyyy-mm-dd)"
     publish_date = gets.chomp.to_s
-    puts "Is the game a multiplayer game(Yy/Nn)?"
+    puts 'Is the game a multiplayer game(Yy/Nn)?'
     multiplayer = gets.chomp
     if multiplayer.downcase == 'y'
       multiplayer = true
@@ -125,11 +140,11 @@ class App
       puts 'Invalid choice!'
       exit
     end
-    puts "When did you last play the game(yyyy-mm-dd)"
+    puts 'When did you last play the game(yyyy-mm-dd)'
     last_played = gets.chomp.to_s
     game = Game.new(publish_date, multiplayer, last_played)
     @games.push(game)
-    puts "Hurray! Game created"
+    puts 'Hurray! Game created'
   end
 
   def display_all_sources
