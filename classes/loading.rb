@@ -29,30 +29,27 @@ class Saving
     end
   end
 
-  def load_sources
-    source_hash = []
-    return source_hash unless File.exist?('data/source.json')
-
-    source_hash = JSON.parse(File.read('data/source.json'))
-
+  def load_sources(sources)
+    return unless File.exist?('data/sources.json')
+  
+    source_hash = JSON.parse(File.read('data/sources.json'))
     source_hash.each do |source|
       source_obj = Source.new(source['name'])
       source_obj.id = source['id']
-      @sources << source_obj
+      sources << source_obj
     end
-  end
+  end  
 
-  def load_movies
-    movie_hash = []
-    return movie_hash unless File.exist?('data/movie.json')
-
-    movie_hash = load_data_from_file('data/movie.json')
+  def load_movies(movies)
+    return unless File.exist?('data/movies.json')
+  
+    movie_hash = JSON.parse(File.read('data/movies.json'))
     movie_hash.each do |movie|
       movie_obj = Movie.new(movie['publish_date'], silent: movie['silent'])
       movie_obj.id = movie['id']
       source_obj = @sources.find { |source| source.name == movie['source'] }
       movie_obj.add_source(source_obj)
-      @movies << movie_obj
+      movies << movie_obj
     end
-  end
+  end  
 end
