@@ -2,6 +2,7 @@
 
 require_relative 'app'
 
+# This is item.rb it reps an item class
 class UserInteractions
   def initialize
     @catalog = App.new
