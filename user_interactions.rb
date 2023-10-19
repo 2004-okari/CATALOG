@@ -31,6 +31,12 @@ class UserInteractions
       4 - List all games
       5 - List all genres
       6 - List all labels
+    OPTIONS
+    option2
+  end
+
+  def option2
+    puts <<~OPTIONS
       7 - List all authors
       8 - List all sources
       9 - Add a book
@@ -42,21 +48,12 @@ class UserInteractions
   end
 
   def call_option(option)
-    option_lookup = {
-      1 => :list_all_books,
-      2 => :list_music_album,
-      3 => :display_all_movies,
-      4 => :list_games,
-      5 => :list_genre,
-      6 => :list_all_labels,
-      7 => :list_authors,
-      8 => :display_all_sources,
-      9 => :add_book,
-      10 => :add_music_album,
-      11 => :add_movie,
-      12 => :add_game,
-      13 => :save_data
-    }
+    option_lookup = { 1 => :list_all_books, 2 => :list_music_album,
+                      3 => :display_all_movies, 4 => :list_games, 5 => :list_genre,
+                      6 => :list_all_labels, 7 => :list_authors,
+                      8 => :display_all_sources, 9 => :add_book, 10 => :add_music_album,
+                      11 => :add_movie, 12 => :add_game,
+                      13 => :save_data }
 
     @catalog.public_send(option_lookup[option])
   end
