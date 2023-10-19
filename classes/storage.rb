@@ -71,8 +71,8 @@ class Storage
     File.write('data/sources.json', JSON.pretty_generate(updated_data))
   end
 
-  def save_music_album(album)
-    json_album = album.map do |album|
+  def save_music_album(albums)
+    json_album = albums.map do |album|
       {
         'spotify' => album.on_spotify,
         'genre' => album.genre
