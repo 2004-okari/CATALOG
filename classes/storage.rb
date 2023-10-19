@@ -44,25 +44,30 @@ class Storage
   end
 
   def save_movies(movies)
+    existing_data = []
+    existing_data = JSON.parse(File.read('data/movies.json')) if File.exist?('data/movies.json')
     movie_hash = movies.map do |movie|
-      {
-        id: movie.id,
-        publish_date: movie.publish_date,
-        silent: movie.silent,
-        source: movie.source.name
-      }
+      { id: movie.id, publish_date: movie.publish_date, silent: movie.silent, source: movie.source.name }
     end
-    File.write('data/movies.json', JSON.pretty_generate(movie_hash))
+    updated_data = existing_data.concat(movie_hash)
+    File.write('data/movies.json', JSON.pretty_generate(updated_data))
   end
 
   def save_sources(sources)
+    existing_data = []
+
+    existing_data = JSON.parse(File.read('data/sources.json')) if File.exist?('data/sources.json')
+
     source_hash = sources.map do |source|
       {
         id: source.id,
         name: source.name
       }
     end
-    File.write('data/sources.json', JSON.pretty_generate(source_hash))
+
+    updated_data = existing_data.concat(source_hash)
+
+    File.write('data/sources.json', JSON.pretty_generate(updated_data))
   end
 
   def save_music_album(album)
