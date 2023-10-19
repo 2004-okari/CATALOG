@@ -8,5 +8,10 @@
     "publish_date": "2020-03-03",
     "publisher": "Jozi",
     "cover_state": "good"
+  },
+  {
+    "publish_date": "2020-09-09",
+    "publisher": "Newton",
+    "cover_state": "bad"
   }
 ]
