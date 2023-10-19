@@ -194,16 +194,17 @@ class App
     silent = input_silent
     movie = Movie.new(publish_date, silent: silent)
     @movies << movie
-    new_source = add_sources
-    existing_source = @sources.find { |source| source.name == new_source }
-    if existing_source
-      existing_source.add_item(movie)
-    else
-      source = Source.new(new_source)
-      source.add_item(movie)
-      @sources << source
-    end
+    source_name = input_source_name
+    source = @sources.find { |s| s.name == source_name }
+    source ||= Source.new(source_name)
+    source.add_item(movie)
   end
+  
+  def input_source_name
+    puts 'Add a source'
+    puts 'Enter Source Name'
+    gets.chomp
+  end  
 
   def input_date
     puts 'Please Enter publish date in following format: yyyy/mm/dd'
