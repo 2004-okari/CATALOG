@@ -1,8 +1,5 @@
-# frozen_string_literal: true
-
 require_relative '../classes/book'
 
-# This for the list
 class List
   def list_all_books(books)
     puts 'Books unavailable' if books.empty?

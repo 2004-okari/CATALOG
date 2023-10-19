@@ -1,8 +1,5 @@
-# frozen_string_literal: true
-
 require_relative './item'
 
-# This is Book class
 class Book < Item
   attr_accessor :publisher, :cover_state
 
