@@ -52,7 +52,7 @@ class App
       puts 'No genres found. Add a genre'
     else
       @genre.each_with_index do |genre, index|
-        puts "#{index + 1}) Genre: \"#{genre}\""
+        puts "#{index + 1}) Genre: \"#{genre.name}\""
       end
     end
   end
@@ -65,7 +65,7 @@ class App
         if album.on_spotify
           puts "#{index + 1}) Music Album: On Spotify, Genre => \"#{album.genre}\""
         else
-          puts "#{index + 1}) Music Album: Not on Spotify, Genre => \"#{album.on_spotify}\""
+          puts "#{index + 1}) Music Album: Not on Spotify, Genre => \"#{album.genre}\""
         end
       end
     end
@@ -84,8 +84,9 @@ class App
     end
     puts "What's the genre?: "
     genre_name = gets.chomp
+    new_genre = Genre.new(genre_name)
     new_music_album = MusicAlbum.new(spotify, genre_name)
-    @genre << genre_name unless @genre.include? genre_name
+    @genre << new_genre unless @genre.include? new_genre
     @music_album << new_music_album
     print 'Music album created!'
   end
