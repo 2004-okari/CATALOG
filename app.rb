@@ -12,6 +12,8 @@ require_relative './classes/loading'
 require_relative './classes/storage'
 require_relative './classes/book'
 require_relative './classes/album_genre'
+require_relative './classes/book-label'
+require_relative './classes/game_author'
 
 # This contains general information
 class App
@@ -28,6 +30,8 @@ class App
   end
 
   include AlbumGenre
+  include BookLabel
+  include GameAuthor
 
   def save_data
     puts 'saving data...'
@@ -48,99 +52,6 @@ class App
     Saving.new.load_authors(@authors)
     Saving.new.load_music_album(@music_album)
     Saving.new.load_genre(@genre)
-  end
-
-  def add_book
-    puts 'Enter the date of publication(yyyy-mm-dd):'
-    publish_date = gets.chomp
-    puts 'Enter the publisher\'s name:'
-    publisher = gets.chomp
-    puts 'Enter the state of the book cover (Good or bad):'
-    cover_state = gets.chomp
-    puts 'Enter the label title:'
-    title = gets.chomp
-    puts 'Enter the color of the book'
-    color = gets.chomp
-    book = Book.new(publish_date, publisher, cover_state)
-    label = Label.new(title, color)
-    @books.push(book)
-    @labels.push(label)
-    puts 'You\'ve successfully added a book'
-  end
-
-  def list_games
-    if @games.empty?
-      puts 'No games found.'
-    else
-      puts 'List of Games:'
-      @games.each_with_index do |game, index|
-        display_game(game, index)
-      end
-    end
-  end
-
-  def display_game(game, index)
-    id_text = "ID: #{game.id}"
-    publish_date_text = "Published Date: #{game.publish_date}"
-    multiplayer_text = "Multiplayer: #{game.multiplayer ? 'Yes' : 'No'}"
-    last_played_text = "Last Played: #{game.last_played_at}"
-
-    puts "#{index + 1}, #{id_text}, #{publish_date_text}, #{multiplayer_text}, #{last_played_text}"
-  end
-
-  def list_authors
-    if @authors.empty?
-      puts 'No authors found.'
-    else
-      puts 'List of Authors:'
-      @authors.each do |author|
-        puts "ID: #{author.id}, Name: #{author.full_name}"
-      end
-    end
-  end
-
-  def list_all_books
-    puts 'Books unavailable' if @books.empty?
-    puts
-    @books.each do |book|
-      puts "Publish Date: #{book.publish_date}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
-    end
-  end
-
-  def list_all_labels
-    puts 'Labels unavailable' if @labels.empty?
-    puts
-    @labels.each do |label|
-      puts "Title: #{label.title}, Author: #{label.color}"
-    end
-  end
-
-  def add_game
-    puts 'Let\'s add a new game'
-    publish_date = input_dates('When was the game published(yyyy-mm-dd):')
-    multiplayer = input_multiplayer
-    last_played = input_dates('When did you last play the game(yyyy-mm-dd):')
-    game = Game.new(publish_date, multiplayer, last_played)
-    @games.push(game)
-
-    puts 'Hurray! Game created'
-  end
-
-  def input_dates(prompt)
-    print prompt
-    gets.chomp.to_s
-  end
-
-  def input_multiplayer
-    print 'Is the game a multiplayer game? (Y/N): '
-    choice = gets.chomp.downcase
-    case choice
-    when 'y' then true
-    when 'n' then false
-    else
-      puts 'Invalid choice!'
-      exit
-    end
   end
 
   def display_all_sources
