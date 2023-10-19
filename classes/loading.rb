@@ -23,7 +23,7 @@ class Saving
     return unless File.exist?('data/genre.json')
 
     retrieved_genre = JSON.parse(File.read('data/genre.json'))
-      genre << Genre.new(retrieved_genre)
+    genre << Genre.new(retrieved_genre)
   end
 
   def load_books(books)

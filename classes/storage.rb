@@ -55,7 +55,6 @@ class Storage
     File.write('data/movies.json', JSON.pretty_generate(movie_hash))
   end
 
-
   def save_sources(sources)
     source_hash = sources.map do |source|
       {
@@ -80,5 +79,4 @@ class Storage
     json_genre = genre[0]
     File.write('data/genre.json', JSON.pretty_generate(json_genre))
   end
-
 end

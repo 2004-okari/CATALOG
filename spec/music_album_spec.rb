@@ -10,7 +10,7 @@ describe 'MusicAlbum' do
       publish_year = current_year - 11
       spotify = true
       album = MusicAlbum.new(spotify, 'pop')
-      album.publish_date = "#{publish_year}-01-01" 
+      album.publish_date = "#{publish_year}-01-01"
       expect(album.send(:can_be_archived?)).to be true
     end
 

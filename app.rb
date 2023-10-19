@@ -62,7 +62,7 @@ class App
       puts 'No music albums found. Add a music album'
     else
       @music_album.each_with_index do |album, index|
-        if album.on_spotify 
+        if album.on_spotify
           puts "#{index + 1}) Music Album: On Spotify, Genre => \"#{album.genre}\""
         else
           puts "#{index + 1}) Music Album: Not on Spotify, Genre => \"#{album.on_spotify}\""
