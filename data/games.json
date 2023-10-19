@@ -1,3 +1,12 @@
 [
-
+  {
+    "publish_date": "2005-09-18",
+    "multiplayer": false,
+    "last_played_at": "2022-09-12"
+  },
+  {
+    "publish_date": "2013-09-17",
+    "multiplayer": true,
+    "last_played_at": "2023-07-08"
+  }
 ]
