@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # This is item.rb it reps an item class
+require 'date'
 class Item
   attr_accessor :genre, :author, :source, :label, :publish_date
   attr_reader :id
@@ -40,6 +41,7 @@ class Item
   private
 
   def can_be_archived?
+
     current_year = Date.today.year
     publish_year = Date.parse(@publish_date).year
     current_year - publish_year > 10

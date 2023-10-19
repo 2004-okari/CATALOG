@@ -10,13 +10,20 @@ class Saving
     end
   end
 
-  def load_music_album(album)
-    return unless File.exist?('data/music.json')
+  def load_music_album(music_album)
+    return unless File.exist?('data/music_album.json')
 
-    retrieved_books = JSON.parse(File.read('data/music.json'))
-    retrieved_books.each do |_book|
+    retrieved_album = JSON.parse(File.read('data/music_album.json'))
+    retrieved_album.each do |album|
       music_album << MusicAlbum.new(album['spotify'], album['genre'])
     end
+  end
+
+  def load_genre(genre)
+    return unless File.exist?('data/genre.json')
+
+    retrieved_genre = JSON.parse(File.read('data/genre.json'))
+      genre << Genre.new(retrieved_genre)
   end
 
   def load_books(books)

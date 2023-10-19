@@ -34,15 +34,17 @@ class App
     Storage.new.save_sources(@sources)
     Storage.new.save_games(@games)
     Storage.new.save_authors(@authors)
+    Storage.new.save_music_album(@music_album)
+    Storage.new.save_genre(@genre)
   end
 
   def load_data
     Saving.new.load_books(@books)
     Saving.new.load_labels(@labels)
-    Saving.new.load_movies(@movies)
-    Saving.new.load_sources(@sources)
     Saving.new.load_games(@games)
     Saving.new.load_authors(@authors)
+    Saving.new.load_music_album(@music_album)
+    Saving.new.load_genre(@genre)
   end
 
   def list_genre
@@ -60,7 +62,11 @@ class App
       puts 'No music albums found. Add a music album'
     else
       @music_album.each_with_index do |album, index|
-        puts "#{index + 1}) Music Album: \"#{album}\""
+        if album.on_spotify 
+          puts "#{index + 1}) Music Album: On Spotify, Genre => \"#{album.genre}\""
+        else
+          puts "#{index + 1}) Music Album: Not on Spotify, Genre => \"#{album.on_spotify}\""
+        end
       end
     end
   end
