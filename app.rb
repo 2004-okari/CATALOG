@@ -141,23 +141,31 @@ class App
   end
 
   def add_game
-    puts "Lets add a new game\nWhen was the game published(yyyy-mm-dd)"
-    publish_date = gets.chomp.to_s
-    puts 'Is the game a multiplayer game(Yy/Nn)?'
-    multiplayer = gets.chomp
-    if multiplayer.downcase == 'y'
-      multiplayer = true
-    elsif multiplayer.downcase == 'n'
-      multiplayer = false
+    puts 'Let\'s add a new game'
+    publish_date = input_dates('When was the game published(yyyy-mm-dd):')
+    multiplayer = input_multiplayer
+    last_played = input_dates('When did you last play the game(yyyy-mm-dd):')
+    game = Game.new(publish_date, multiplayer, last_played)
+    @games.push(game)
+
+    puts 'Hurray! Game created'
+  end
+
+  def input_dates(prompt)
+    print prompt
+    gets.chomp.to_s
+  end
+
+  def input_multiplayer
+    print 'Is the game a multiplayer game? (Y/N): '
+    choice = gets.chomp.downcase
+    case choice
+    when 'y' then true
+    when 'n' then false
     else
       puts 'Invalid choice!'
       exit
     end
-    puts 'When did you last play the game(yyyy-mm-dd)'
-    last_played = gets.chomp.to_s
-    game = Game.new(publish_date, multiplayer, last_played)
-    @games.push(game)
-    puts 'Hurray! Game created'
   end
 
   def display_all_sources
