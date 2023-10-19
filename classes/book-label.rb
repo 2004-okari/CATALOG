@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This is book-label.rb it reps an item class
 module BookLabel
   def add_book
     puts 'Enter the date of publication(yyyy-mm-dd):'

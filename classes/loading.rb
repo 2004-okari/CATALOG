@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This is item.rb it reps an item class
 class Saving
   def load_labels(labels)
     return unless File.exist?('data/labels.json')

@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# This is item.rb it reps an item class
 require 'date'
+
+# This is item.rb it reps an item class
 class Item
   attr_accessor :genre, :author, :source, :label, :publish_date
   attr_reader :id
