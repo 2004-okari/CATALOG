@@ -83,7 +83,7 @@ class Storage
   def save_genre(genre_item)
     json_genre = genre_item.map do |genre|
       {
-        "name" => genre.name
+        'name' => genre.name
       }
     end
     File.write('data/genre.json', JSON.pretty_generate(json_genre))

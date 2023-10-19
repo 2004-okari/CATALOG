@@ -11,6 +11,7 @@ require_relative './classes/source'
 require_relative './classes/loading'
 require_relative './classes/storage'
 require_relative './classes/book'
+require_relative './classes/album_genre'
 
 # This contains general information
 class App
@@ -25,6 +26,8 @@ class App
     @sources = []
     load_data
   end
+
+  include AlbumGenre
 
   def save_data
     puts 'saving data...'
@@ -45,50 +48,6 @@ class App
     Saving.new.load_authors(@authors)
     Saving.new.load_music_album(@music_album)
     Saving.new.load_genre(@genre)
-  end
-
-  def list_genre
-    if @genre.empty?
-      puts 'No genres found. Add a genre'
-    else
-      @genre.each_with_index do |genre, index|
-        puts "#{index + 1}) Genre: \"#{genre.name}\""
-      end
-    end
-  end
-
-  def list_music_album
-    if @music_album.empty?
-      puts 'No music albums found. Add a music album'
-    else
-      @music_album.each_with_index do |album, index|
-        if album.on_spotify
-          puts "#{index + 1}) Music Album: On Spotify, Genre => \"#{album.genre}\""
-        else
-          puts "#{index + 1}) Music Album: Not on Spotify, Genre => \"#{album.genre}\""
-        end
-      end
-    end
-  end
-
-  def add_music_album
-    print 'Is it on Spotify(Y/N): '
-    spotify = gets.chomp
-    if spotify.downcase == 'y'
-      spotify = true
-    elsif spotify.downcase == 'n'
-      spotify = false
-    else
-      print 'Invalid answer'
-      exit
-    end
-    puts "What's the genre?: "
-    genre_name = gets.chomp
-    new_genre = Genre.new(genre_name)
-    new_music_album = MusicAlbum.new(spotify, genre_name)
-    @genre << new_genre unless @genre.include? new_genre
-    @music_album << new_music_album
-    print 'Music album created!'
   end
 
   def add_book
@@ -206,12 +165,12 @@ class App
     source ||= Source.new(source_name)
     source.add_item(movie)
   end
-  
+
   def input_source_name
     puts 'Add a source'
     puts 'Enter Source Name'
     gets.chomp
-  end  
+  end
 
   def input_date
     puts 'Please Enter publish date in following format: yyyy/mm/dd'
