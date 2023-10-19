@@ -19,11 +19,13 @@ class Saving
     end
   end
 
-  def load_genre(genre)
+  def load_genre(genres)
     return unless File.exist?('data/genre.json')
 
     retrieved_genre = JSON.parse(File.read('data/genre.json'))
-    genre << Genre.new(retrieved_genre)
+    retrieved_genre.each do |genre|
+      genres << Genre.new(genre['name'])
+    end
   end
 
   def load_books(books)
