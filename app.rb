@@ -108,9 +108,18 @@ class App
     else
       puts 'List of Games:'
       @games.each_with_index do |game, index|
-        puts "#{index + 1}, ID: #{game.id}, Published Date: #{game.publish_date}, Multiplayer: #{game.multiplayer ? 'Yes' : 'No'}, Last Played: #{game.last_played_at}"
+        display_game(game, index)
       end
     end
+  end
+
+  def display_game(game, index)
+    id_text = "ID: #{game.id}"
+    publish_date_text = "Published Date: #{game.publish_date}"
+    multiplayer_text = "Multiplayer: #{game.multiplayer ? 'Yes' : 'No'}"
+    last_played_text = "Last Played: #{game.last_played_at}"
+
+    puts "#{index + 1}, #{id_text}, #{publish_date_text}, #{multiplayer_text}, #{last_played_text}"
   end
 
   def list_authors
