@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This is item.rb it reps an item class
 class Storage
   def save_book(books)
     json_books = books.map do |book|
