@@ -2,7 +2,8 @@
 
 # Genre represents an genre of items
 class Genre
-  attr_reader :id, :items, :name
+  attr_accessor :items, :name
+  attr_reader :id
 
   def initialize(name)
     @id = Random.rand(1..100)
