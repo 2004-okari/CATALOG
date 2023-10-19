@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'date'
 
 # This is item.rb it reps an item class

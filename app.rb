@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'json'
 require_relative './classes/genre'
 require_relative './classes/music_album'

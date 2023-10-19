@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This is item.rb it reps an item class
 module AlbumGenre
   def list_genre

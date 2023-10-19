@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This is item.rb it reps an item class
 module GameAuthor
   def list_games

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Soucr represents a list of sources
 class Source
   attr_accessor :name, :id

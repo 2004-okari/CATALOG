@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'app'
 
 # This is item.rb it reps an item class

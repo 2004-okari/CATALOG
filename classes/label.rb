@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This is label class
 class Label
   attr_accessor :title, :color, :items

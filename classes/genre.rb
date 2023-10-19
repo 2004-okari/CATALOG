@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Genre represents an genre of items
 class Genre
   attr_accessor :items, :name
