@@ -6,5 +6,9 @@
   {
     "title": "New",
     "color": "pink"
+  },
+  {
+    "title": "Check",
+    "color": "red"
   }
 ]

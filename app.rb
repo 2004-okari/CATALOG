@@ -12,7 +12,7 @@ require_relative './classes/loading'
 require_relative './classes/storage'
 require_relative './classes/book'
 require_relative './classes/album_genre'
-require_relative './classes/book-label'
+require_relative './classes/book_label'
 require_relative './classes/game_author'
 
 # This contains general information
