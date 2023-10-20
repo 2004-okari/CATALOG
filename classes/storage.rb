@@ -60,9 +60,9 @@ class Storage
         name: source.name
       }
     end
-  
+
     File.write('data/sources.json', JSON.pretty_generate(source_hash))
-  end  
+  end 
 
   def save_music_album(albums)
     json_album = albums.map do |album|
