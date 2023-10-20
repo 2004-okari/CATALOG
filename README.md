@@ -118,7 +118,7 @@ rspec
 
 ## 🔭 Video presentations <a name="video-presentation"></a>
 
-- [Link](https://www.loom.com/share/c36ddcd15994058b73071bc912aaf9?sid=f1595b5-3028-4f78-8982-a091887e0c8)
+- [Link](https://drive.google.com/file/d/1aPMvTrDzDPvfbHZe3dYYs4XoJdMdcTka/view?usp=sharing)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
