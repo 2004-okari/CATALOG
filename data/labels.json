@@ -10,5 +10,9 @@
   {
     "title": "Check",
     "color": "red"
+  },
+  {
+    "title": "Hope",
+    "color": "blue"
   }
 ]

@@ -9,9 +9,11 @@ module BookLabel
 
     book = create_book(publish_date, publisher, cover_state)
     label = create_label(title, color)
+    author = create_author(publisher, '.')
 
     @books.push(book)
     @labels.push(label)
+    @authors.push(author)
 
     puts 'You\'ve successfully added a book'
   end
@@ -39,6 +41,10 @@ module BookLabel
     Label.new(title, color)
   end
 
+  def create_author(first_name, last_name)
+    Author.new(first_name, last_name)
+  end
+
   def list_all_books
     puts 'Books unavailable' if @books.empty?
     puts
@@ -51,7 +57,7 @@ module BookLabel
     puts 'Labels unavailable' if @labels.empty?
     puts
     @labels.each do |label|
-      puts "Title: #{label.title}, Author: #{label.color}"
+      puts "Title: #{label.title}, Color: #{label.color}"
     end
   end
 end
