@@ -26,7 +26,7 @@ module GameAuthor
     else
       puts 'List of Authors:'
       @authors.each do |author|
-        puts "ID: #{author.id}, Full Names: #{author.first_name} #{author.last_name}"
+        puts "Full Names: #{author.first_name}#{author.last_name}"
       end
     end
   end
