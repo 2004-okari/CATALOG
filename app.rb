@@ -72,9 +72,12 @@ class App
     @movies << movie
     source_name = input_source_name
     source = @sources.find { |s| s.name == source_name }
-    source ||= Source.new(source_name)
+    if source.nil?
+      source = Source.new(source_name)
+      @sources << source # Add the new source to the array
+    end
     source.add_item(movie)
-  end
+  end  
 
   def input_source_name
     puts 'Add a source'

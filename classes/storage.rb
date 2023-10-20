@@ -54,21 +54,15 @@ class Storage
   end
 
   def save_sources(sources)
-    existing_data = []
-
-    existing_data = JSON.parse(File.read('data/sources.json')) if File.exist?('data/sources.json')
-
     source_hash = sources.map do |source|
       {
         id: source.id,
         name: source.name
       }
     end
-
-    updated_data = existing_data.concat(source_hash)
-
-    File.write('data/sources.json', JSON.pretty_generate(updated_data))
-  end
+  
+    File.write('data/sources.json', JSON.pretty_generate(source_hash))
+  end  
 
   def save_music_album(albums)
     json_album = albums.map do |album|
