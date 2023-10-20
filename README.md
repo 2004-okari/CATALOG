@@ -13,6 +13,7 @@
   - [Usage](#usage)
   - [Run tests](#run-tests)
 - [👥 Authors](#authors)
+- [📸 Video presentation](#video-presentation)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
@@ -112,6 +113,14 @@ rspec
 - GitHub: [@wineshuga](https://github.com/wineshuga)
 - LinkedIn: [@wineshuga](https://linkedin.com/in/wineshuga)
 - LinkedIn: [@wineshuga](https://twitter.com/wineshuga) 
+
+<!-- VIDEO PRESENTATION -->
+
+## 🔭 Video presentations <a name="video-presentation"></a>
+
+- [Link](https://www.loom.com/share/c36ddcd15994058b73071bc912aaf9?sid=f1595b5-3028-4f78-8982-a091887e0c8)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
 
