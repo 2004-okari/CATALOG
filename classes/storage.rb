@@ -36,7 +36,8 @@ class Storage
     json_authors = authors.map do |author|
       {
         'id' => author.id,
-        'full_name' => author.full_name
+        'first_name' => author.first_name,
+        'last_name' => '.'
       }
     end
     File.write('data/authors.json', JSON.pretty_generate(json_authors))

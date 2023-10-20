@@ -52,7 +52,7 @@ class Saving
 
     retrieved_authors = JSON.parse(File.read('data/authors.json'))
     retrieved_authors.each do |author_data|
-      author = Author.new(author_data['id'], author_data['full_name'])
+      author = Author.new(author_data['first_name'], author_data['last_name'])
       authors << author
     end
   end
