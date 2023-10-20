@@ -50,6 +50,7 @@ class App
     Saving.new.load_authors(@authors)
     Saving.new.load_music_album(@music_album)
     Saving.new.load_genre(@genre)
+    Saving.new.load_genre(@sources)
   end
 
   def display_all_sources

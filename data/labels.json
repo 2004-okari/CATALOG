@@ -10,5 +10,13 @@
   {
     "title": "Check",
     "color": "red"
+  },
+  {
+    "title": "Hope",
+    "color": "blue"
+  },
+  {
+    "title": "Hope",
+    "color": "green"
   }
 ]

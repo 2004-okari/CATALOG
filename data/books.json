@@ -18,5 +18,15 @@
     "publish_date": "2019-05-05",
     "publisher": "Canbury",
     "cover_state": "bad"
+  },
+  {
+    "publish_date": "2002-09-18",
+    "publisher": "Okari",
+    "cover_state": "good"
+  },
+  {
+    "publish_date": "2009-09-17",
+    "publisher": "Okari Nyandika",
+    "cover_state": "good"
   }
 ]
